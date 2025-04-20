@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - UAT_AUTH_USERNAME=${UAT_AUTH_USERNAME}
+      - UAT_AUTH_PASSWORD=${UAT_AUTH_PASSWORD}
+      - PROD_AUTH_USERNAME=${PROD_AUTH_USERNAME}
+      - PROD_AUTH_PASSWORD=${PROD_AUTH_PASSWORD}
+      - API_KEY=${API_KEY}
+      - ENVIRONMENT=${ENVIRONMENT}
+    restart: unless-stopped
